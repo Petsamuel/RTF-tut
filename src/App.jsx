@@ -1,20 +1,22 @@
 import { Fragment } from 'react'
-import { Canvas } from '@react-three/fiber'
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Tutorials from './pages/tutorials';
+import Project1 from './pages/project1';
+import Project2 from './pages/project2';
+
+import "./App"
 
 function App() {
   return (
     <Fragment>
-      <section className='flex  items-center mt-[10em]'>
-        <Canvas >
-          <ambientLight intensity={0.1} />
-          <directionalLight color="red" position={[2, 2, 5]} />
-          <mesh>
-            <boxGeometry args={[4, 4, 4]} />
-            <meshStandardMaterial />
-          </mesh>
-        </Canvas>
-      </section>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Tutorials />} />
+          <Route exact path="/project" element={<Project1 />} />
+          <Route exact path="/project2" element={<Project2 />} />
+        </Routes>
+      </BrowserRouter>
     </Fragment>
   );
 }
